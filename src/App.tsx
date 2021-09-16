@@ -1,22 +1,29 @@
 import React from 'react';
 import './App.css';
-import {Alert, Container,} from "reactstrap";
+import {Container,} from "reactstrap";
 
 import {DynamicForm} from "./dynamic-forms/DynamicForm";
 import {mockForm} from "./dynamic-forms/mockForm";
+import {IWhitelabelConfig} from "whitelabel-config";
+import {RealtimeFormSummary} from "RealtimeFormSummary";
 
-function App() {
+interface IProps {
+    config: IWhitelabelConfig;
+}
+
+function App(props: IProps) {
+    const { config } = props
     return (
-        <Container>
+        <Container className="app">
             <header>
-                <h1>Whitelabel form PoC</h1>
+                <h1>{config.title}</h1>
+                <p>{config.description}</p>
             </header>
-            <p>
-                This app showcases a PoC based heavily on <a
-                href="https://medium.com/swlh/white-label-web-app-with-reactjs-and-webpack-bb3a94a83fe6">https://medium.com/swlh/white-label-web-app-with-reactjs-and-webpack-bb3a94a83fe6</a>.
-            </p>
-            <Alert>Everything below this is completely controlled by a mock API...</Alert>
+
+            <RealtimeFormSummary />
+
             <DynamicForm form={mockForm}/>
+
         </Container>
     );
 }

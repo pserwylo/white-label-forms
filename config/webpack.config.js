@@ -77,6 +77,10 @@ const hasJsxRuntime = (() => {
   }
 })();
 
+// Support specific brands to override the default whitelabel values:
+// https://medium.com/swlh/white-label-web-app-with-reactjs-and-webpack-bb3a94a83fe6
+const brandPath = `src/brands/${process.env.APP_BRAND}`;
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -312,7 +316,12 @@ module.exports = function (webpackEnv) {
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
       // https://github.com/facebook/create-react-app/issues/253
-      modules: ['node_modules', paths.appNodeModules].concat(
+      modules: [
+        brandPath,
+        'src/brands/default',
+        'node_modules',
+        paths.appNodeModules
+      ].concat(
         modules.additionalModulePaths || []
       ),
       // These are the reasonable defaults supported by the Node ecosystem.

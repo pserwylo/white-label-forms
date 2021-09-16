@@ -1,0 +1,10 @@
+body {
+    background-color: #e01a22;
+    padding: 2rem;
+}
+
+.app {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+}

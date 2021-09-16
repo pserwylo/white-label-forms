@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'whitelabel-styles.css'
+import {config} from "whitelabel-config";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App config={config} />
   </React.StrictMode>,
   document.getElementById('root')
 );
